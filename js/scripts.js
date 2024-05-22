@@ -1,5 +1,6 @@
 const container = document.querySelector('.container');
 const qrCodeBtn = document.querySelector('#qr-form button');
+const qrCodeBtnDownload = document.querySelector('#qr-download')
 const qrCodeInput = document.querySelector('#qr-form input');
 const qrCodeImg = document.querySelector('#qr-code img');
 
@@ -30,6 +31,16 @@ qrCodeInput.addEventListener("keydown", (e) =>{
         generateQrCode();
     }
 });
+
+//download do QRCode
+qrCodeBtnDownload.addEventListener("click",async () =>{
+    const response = await fetch(qrCodeImg.src);
+    const blob = await response.blob();
+    const downloadLink = document.createElement("a");
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = "qr_code_PNG39.png";
+    downloadLink.click();
+})
 
 //Limpar área do QR Code
 qrCodeInput.addEventListener('keyup', () => {
