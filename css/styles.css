@@ -86,7 +86,7 @@ body{
     border-radius: 5px;
     transition: 0.5s;
 }
-
+/* QR Code Download */
 #qr-download{
     margin: 20px 15px;
 }
